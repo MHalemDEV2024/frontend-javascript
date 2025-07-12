@@ -44,7 +44,26 @@ function createEmployee(salary: number | string): Director | Teacher {
   return new Director();
 }
 
-// Testing
+//  isDirector function (type predicate)
+function isDirector(employee: Teacher | Director): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+
+//  executeWork function
+function executeWork(employee: Teacher | Director): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+// Test: Advanced types Part 1
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
 console.log(createEmployee('$500'));
+
+
+// Test: Creating functions specific to employees
+console.log(executeWork(createEmployee(200)));    // Getting to work
+console.log(executeWork(createEmployee(1000)));   // Getting to director tasks
