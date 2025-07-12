@@ -58,6 +58,18 @@ function executeWork(employee: Teacher | Director): string {
   }
 }
 
+
+// String literal type
+type Subjects = 'Math' | 'History';
+
+// teachClass function
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  }
+  return 'Teaching History';
+}
+
 // Test: Advanced types Part 1
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
@@ -67,3 +79,9 @@ console.log(createEmployee('$500'));
 // Test: Creating functions specific to employees
 console.log(executeWork(createEmployee(200)));    // Getting to work
 console.log(executeWork(createEmployee(1000)));   // Getting to director tasks
+
+
+
+// Test: String literal types
+console.log(teachClass('Math'));     // Teaching Math
+console.log(teachClass('History'));  // Teaching History
