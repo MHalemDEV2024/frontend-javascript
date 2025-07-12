@@ -1,20 +1,16 @@
-// File: task_4/js/subjects/Java.ts
-/// <reference path="./Subject.ts" />
-namespace Subjects {
-  export interface Teacher {
-    experienceTeachingJava?: number;
+// js/subjects/Java.ts
+import { Teacher } from './Teacher.js';
+import Subject from './Subject.js';
+
+export default class Java extends Subject {
+  getRequirements(): string {
+    return 'Here is the list of requirements for Java';
   }
 
-  export class Java extends Subject {
-    getRequirements(): string {
-      return 'Here is the list of requirements for Java';
-    }
-
-    getAvailableTeacher(): string {
-      if (!this.teacher || this.teacher.experienceTeachingJava === undefined || this.teacher.experienceTeachingJava <= 0) {
-        return 'No available teacher';
-      }
+  getAvailableTeacher(): string {
+    if (this.teacher?.experienceTeachingJava) {
       return `Available Teacher: ${this.teacher.firstName}`;
     }
+    return 'No available teacher';
   }
 }
